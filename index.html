@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Creative Learning Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FBFAF7;--surface:#fff;--sand:#EDE6D6;--ink:#1F1C17;--mute:#6B655A;--gold:#A8842F;--line:#DDD5C3;--btn:#1F1C17;--btnt:#FBFAF7;color-scheme:light;
+--serif:'Newsreader',Georgia,serif;--sans:'Instrument Sans',system-ui,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171512;--surface:#211E19;--sand:#2B271F;--ink:#F2EDE2;--mute:#A39B8A;--gold:#D2AE5E;--line:#3A352B;--btn:#F2EDE2;--btnt:#171512;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171512;--surface:#211E19;--sand:#2B271F;--ink:#F2EDE2;--mute:#A39B8A;--gold:#D2AE5E;--line:#3A352B;--btn:#F2EDE2;--btnt:#171512;color-scheme:dark}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.1;margin:0}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:.4em}
+p{margin:0 0 1em;max-width:62ch}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:72px 0;border-top:1px solid var(--line)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:20px;height:60px}
+.logo{font-family:var(--serif);font-size:1.25rem;text-decoration:none;white-space:nowrap}
+nav{display:flex;gap:18px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+nav a{text-decoration:none;font-size:.9rem;color:var(--mute);white-space:nowrap}
+nav a:hover{color:var(--ink)}
+.btn{font:500 .95rem var(--sans);background:var(--btn);color:var(--btnt);border:1px solid var(--btn);padding:11px 20px;border-radius:2px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.sm{padding:7px 12px;font-size:.85rem}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:64px 0 80px}
+.hero h1{font-size:clamp(2.6rem,6.4vw,4.8rem);letter-spacing:-.02em;margin-bottom:.35em}
+.hero p{color:var(--mute);font-size:1.1rem}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.shelf{display:flex;align-items:flex-end;justify-content:center;gap:8px;height:360px;border-bottom:3px solid var(--gold);padding:0 10px}
+.shelf .cover{width:96px;flex:none;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.shelf .cover:nth-child(2){height:300px;animation-delay:.08s}.shelf .cover:nth-child(3){height:340px;animation-delay:.16s}
+.shelf .cover:nth-child(4){height:280px;animation-delay:.24s}.shelf .cover:nth-child(1){height:250px}
+@keyframes rise{from{transform:translateY(40px);opacity:0}}
+@media (prefers-reduced-motion:reduce){.shelf .cover{animation:none}html{scroll-behavior:auto}}
+.cover{aspect-ratio:2/3;background:var(--c);color:#F6EFE0;padding:14px 12px;display:flex;flex-direction:column;justify-content:space-between;border-radius:2px 5px 5px 2px;box-shadow:inset 5px 0 0 rgba(0,0,0,.22);font-family:var(--serif)}
+.cover b{font-weight:600;font-size:.95rem;line-height:1.15}
+.cover i{font-size:.7rem;opacity:.8;border-top:1px solid var(--g,#C9A24D);padding-top:6px;font-style:normal;font-family:var(--sans)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:0;border:1px solid var(--line)}
+.cats a{padding:22px;border:1px solid var(--line);margin:-1px 0 0 -1px;text-decoration:none;background:var(--surface)}
+.cats a:hover{background:var(--sand)}
+.cats h3{font-size:1.25rem;margin-bottom:6px}.cats span{color:var(--mute);font-size:.88rem}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 28px;align-items:center}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:10px 12px;border-radius:2px;width:100%}
+.tools input{max-width:300px}
+.chip{font:inherit;font-size:.88rem;background:none;border:1px solid var(--line);color:var(--ink);padding:6px 14px;border-radius:99px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.card{background:var(--surface);border:1px solid var(--line);padding:16px;display:flex;flex-direction:column;gap:10px}
+.card .cover{width:100%}
+.card h3{font-size:1.15rem}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.tag{font-size:.78rem;padding:2px 9px;border:1px solid var(--gold);color:var(--gold);border-radius:99px}
+.tag.paid{border-color:var(--line);color:var(--mute)}
+.price{font-family:var(--serif);font-size:1.2rem}
+.stars{color:var(--gold);font-size:.85rem}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.art{aspect-ratio:1;background:var(--a);display:flex;align-items:flex-end;padding:14px;color:#fff;font-family:var(--serif);position:relative;overflow:hidden}
+.art::after{content:"";position:absolute;width:70%;aspect-ratio:1;border-radius:50%;background:var(--b);right:-15%;top:-15%;opacity:.85}
+.art span{position:relative;z-index:1}
+.course{display:grid;grid-template-columns:1fr 1fr;gap:28px;background:var(--surface);border:1px solid var(--line);padding:28px}
+.course ol{margin:0;padding-left:1.2em;color:var(--mute)}
+.bar{height:6px;background:var(--sand);margin:12px 0}.bar div{height:100%;width:35%;background:var(--gold)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+form{display:grid;gap:12px;max-width:480px}
+details{border-bottom:1px solid var(--line);padding:12px 0}summary{cursor:pointer;font-weight:500}
+footer{padding:40px 0 60px;border-top:1px solid var(--line);color:var(--mute);font-size:.88rem}
+footer .row{gap:20px}
+dialog{border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:24px;max-width:520px;width:calc(100% - 32px)}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(380px,100%);background:var(--bg);border-left:1px solid var(--line);z-index:60;transform:translateX(100%);transition:transform .25s;padding:calc(env(safe-area-inset-top,0px) + 20px) 20px 20px;display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.item{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.stat div{background:var(--sand);padding:12px}.stat b{display:block;font-family:var(--serif);font-size:1.4rem}
+#toast{position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:80}
+#toast.on{opacity:1}
+@media(max-width:760px){.hero,.two,.course{grid-template-columns:1fr}.shelf{height:280px}.shelf .cover{width:72px}nav{display:none}header .wrap{justify-content:space-between}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="logo" href="#home">The Creative Learning Hub</a>
+<nav aria-label="Main"><a href="#library">Library</a><a href="#store">Shop</a><a href="#portfolio">Previews</a><a href="#courses">Courses</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+<div class="row" style="gap:8px;flex:none"><select id="cur" aria-label="Currency" style="width:auto;padding:6px 8px"><option value="PHP">₱ PHP</option><option value="USD">$ USD</option></select><button class="btn sm" id="cartBtn">Cart (<span id="cn">0</span>)</button></div>
+</div></header>
+
+<main>
+<div class="wrap" id="home">
+<div class="hero">
+<div>
+<h1>Work smarter in Excel.</h1>
+<p>Excel guides, cheat sheets, formulas, macro code and ready-made spreadsheet templates that help small businesses save time and stay organized.</p>
+<div class="row"><a class="btn" href="#library">Explore the library</a><a class="btn ghost" href="#store">Shop templates</a></div>
+</div>
+<div class="shelf" id="shelf" aria-hidden="true"></div>
+</div>
+</div>
+
+<section id="featured"><div class="wrap">
+<h2>New and popular</h2>
+<p style="color:var(--mute)">Fresh from the desk, and what readers pick up most.</p>
+<div class="grid" id="feat"></div>
+</div></section>
+
+<section id="library"><div class="wrap">
+<h2>Excel library</h2>
+<p style="color:var(--mute)">Pick a topic to see its guides, cheat sheets and templates in the shop.</p>
+<div class="cats" id="cats"></div>
+</div></section>
+
+<section id="store"><div class="wrap">
+<h2>Excel shop</h2>
+<p style="color:var(--mute)">Free samples are marked. Paid files unlock after checkout and are never linked publicly.</p>
+<div class="tools"><input id="q" type="search" placeholder="Search guides, formulas, templates" aria-label="Search products">
+<span class="row" id="filters" style="gap:8px"></span></div>
+<div class="grid" id="prods"></div>
+<p id="none" hidden style="margin-top:20px">No matches. Try a shorter search or choose All.</p>
+</div></section>
+
+<section id="portfolio"><div class="wrap">
+<h2>Template previews</h2>
+<p style="color:var(--mute)">A look at the spreadsheets and dashboards you can use in your business.</p>
+<div class="gal" id="gal"></div>
+</div></section>
+
+<section id="courses"><div class="wrap">
+<h2>Courses and learning materials</h2>
+<div class="course">
+<div><h3 style="font-size:1.7rem;margin-bottom:10px">Excel for Small Business in 6 Weeks</h3>
+<p style="color:var(--mute)">Go from spreadsheet beginner to running your sales, stock and expenses in Excel.</p>
+<p><b>You will be able to:</b> use key formulas, build a tracker, and create a simple sales dashboard.</p>
+<div class="bar" role="img" aria-label="Sample progress 35%"><div></div></div><small style="color:var(--mute)">Sample progress: 2 of 6 modules. Certificates are planned for a later release.</small></div>
+<ol><li>Excel essentials</li><li>Formulas that save time</li><li>Lookups and pivot tables</li><li>Invoices and expenses</li><li>Inventory and sales tracking</li><li>Dashboards and macros</li></ol>
+</div></div></section>
+
+<section id="about"><div class="wrap two">
+<div><h2>About the creator</h2>
+<p>I create Excel guides, cheat sheets, formulas and templates because small business owners shouldn’t need to be spreadsheet experts to stay organized. Everything here is practical and ready to use.</p>
+<p style="color:var(--mute)">Replace this text with your own story: your background, what you teach, and why independent learning matters to you.</p></div>
+<div><h3 style="margin-bottom:10px">Questions</h3>
+<details><summary>How do I get my files?</summary><p>After payment you get a download link on the confirmation page and by email.</p></details>
+<details><summary>Can I get a refund?</summary><p>Digital files are usually non-refundable, but contact me within 7 days if a file is faulty.</p></details>
+<details><summary>Do you accept other currencies?</summary><p>Prices show in pesos by default. Use the currency menu for an estimate in US dollars.</p></details>
+</div></div></section>
+
+<section id="contact"><div class="wrap two">
+<div><h2>Contact</h2>
+<p style="margin-bottom:6px">Phone: <a href="tel:+639567646458">09567646458</a></p>
+<p>Email: <a href="mailto:baragokathrina@gmail.com">baragokathrina@gmail.com</a></p>
+<form id="cf"><input required placeholder="Your name" aria-label="Name"><input required type="email" placeholder="Email" aria-label="Email"><textarea rows="4" required placeholder="Message or business inquiry" aria-label="Message"></textarea><button class="btn" type="submit">Send message</button></form></div>
+<div><h3 style="margin-bottom:10px">Newsletter</h3><p style="color:var(--mute)">One email when something new is published.</p>
+<form id="nf"><input required type="email" placeholder="Email" aria-label="Newsletter email"><button class="btn ghost" type="submit">Subscribe</button></form></div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><div class="row"><span>© 2026 The Creative Learning Hub</span><a href="mailto:baragokathrina@gmail.com">baragokathrina@gmail.com</a><a href="tel:+639567646458">09567646458</a><a href="#home">Privacy</a><a href="#home">Terms</a><a href="#home">Refunds</a><a href="#home">Copyright</a><a href="#" id="dash">Creator dashboard (demo)</a></div></div></footer>
+
+<aside class="drawer" id="drawer" aria-label="Cart"><div class="meta"><h3>Your cart</h3><button class="btn ghost sm" id="close">Close</button></div>
+<div id="items" style="flex:1;overflow:auto;margin-top:12px"></div>
+<div class="meta" style="padding:12px 0"><span>Total</span><b class="price" id="tot"></b></div>
+<input id="code" placeholder="Discount code (try LEARN10)" aria-label="Discount code" style="margin-bottom:10px">
+<button class="btn" id="pay">Checkout</button></aside>
+
+<dialog id="dlg"><h3 style="margin-bottom:6px">Creator dashboard</h3>
+<p style="color:var(--mute)">Demo view. A live site needs a login and a database behind this.</p>
+<div class="stat"><div><b id="sOrd">0</b>Orders</div><div><b id="sRev">₱0</b>Sales</div><div><b id="sPr">0</b>Products</div></div>
+<form id="af"><input id="an" required placeholder="Product title" aria-label="Title"><div class="row"><input id="ap" type="number" min="0" placeholder="Price in PHP (0 = free)" aria-label="Price" style="flex:1"><select id="ac" aria-label="Category" style="flex:1"></select></div><div class="row"><button class="btn" type="submit">Add product</button><button class="btn ghost" type="button" id="dc">Close</button></div></form></dialog>
+<div id="toast" role="status"></div>
+
+<script>
+var CATS=["Excel Guides","Cheat Sheets","Formulas and Codes","Business Templates","Bookkeeping and Finance","Inventory and Sales"];
+var P=[
+["Excel Basics for Business Owners","Excel Guides","Guide",0,4.8,"#2C4A3E"],
+["Top 50 Formulas Cheat Sheet","Cheat Sheets","Cheat sheet",0,4.9,"#3B2F2A"],
+["Keyboard Shortcuts Cheat Sheet","Cheat Sheets","Cheat sheet",99,4.7,"#2B3A55"],
+["VLOOKUP and XLOOKUP Made Easy","Formulas and Codes","Guide",199,4.6,"#4A3B22"],
+["Ready-to-Use VBA Macro Pack","Formulas and Codes","Code pack",349,4.5,"#35303F"],
+["Invoice and Receipt Template","Business Templates","Excel file",249,4.8,"#5A3A32"],
+["Budget and Cash Flow Tracker","Bookkeeping and Finance","Excel file",299,4.8,"#3E4A2F"],
+["Profit and Loss Template","Bookkeeping and Finance","Excel file",299,4.4,"#2F4650"],
+["Inventory Tracker with Stock Alerts","Inventory and Sales","Excel file",399,4.9,"#524233"],
+["Sales Dashboard Template","Inventory and Sales","Excel file",449,4.7,"#3A3A3A"],
+["Payroll and Attendance Sheet","Business Templates","Excel file",349,4.5,"#4B2F3F"],
+["Pivot Tables in One Hour","Excel Guides","Guide",0,4.6,"#26403F"]];
+var cart=[],cat="All",cur="PHP",rate=56,disc=0,orders=0,rev=0;
+try{var s=JSON.parse(localStorage.getItem("clh-cart")||"[]");if(Array.isArray(s))cart=s}catch(e){}
+function $(i){return document.getElementById(i)}
+function money(n){return cur==="PHP"?"₱"+Math.round(n).toLocaleString():"$"+(n/rate).toFixed(2)}
+function cover(p){return '<div class="cover" style="--c:'+p[5]+'"><b>'+p[0]+'</b><i>'+p[2]+'</i></div>'}
+function card(p,i){var free=p[3]===0;return '<article class="card">'+cover(p)+'<div class="meta"><span class="tag'+(free?'':' paid')+'">'+(free?'Free':'Premium')+'</span><span class="stars" aria-label="Rating '+p[4]+' of 5">★ '+p[4]+'</span></div><h3>'+p[0]+'</h3><span style="color:var(--mute);font-size:.88rem">'+p[1]+'</span><div class="meta"><span class="price">'+(free?'Free':money(p[3]))+'</span><button class="btn sm" data-i="'+i+'">'+(free?'Download':'Add to cart')+'</button></div></article>'}
+function toast(t){var e=$("toast");e.textContent=t;e.className="on";setTimeout(function(){e.className=""},1800)}
+function render(){
+ $("shelf").innerHTML=[1,4,5,8].map(function(i){return cover(P[i])}).join("");
+ $("feat").innerHTML=[8,5,6,4].map(function(i){return card(P[i],i)}).join("");
+ $("cats").innerHTML=CATS.map(function(c){var n=P.filter(function(p){return p[1]===c}).length;return '<a href="#store" data-c="'+c+'"><h3>'+c+'</h3><span>'+n+' resource'+(n===1?'':'s')+'</span></a>'}).join("");
+ $("filters").innerHTML=["All","Free"].concat(CATS).map(function(c){return '<button class="chip" aria-pressed="'+(c===cat)+'" data-f="'+c+'">'+c+'</button>'}).join("");
+ var q=$("q").value.toLowerCase(),n=0,h="";
+ P.forEach(function(p,i){var ok=(cat==="All"||(cat==="Free"?p[3]===0:p[1]===cat))&&(p[0]+p[1]+p[2]).toLowerCase().indexOf(q)>-1;if(ok){n++;h+=card(p,i)}});
+ $("prods").innerHTML=h;$("none").hidden=n>0;
+ $("gal").innerHTML=[["Sales dashboard","#2C4A3E","#C9D8B6"],["Invoice template","#2B2A28","#B8913A"],["Inventory tracker","#4A3B22","#CDAA5B"],["Cash flow tracker","#2B3A55","#B7C6E0"],["Payroll sheet","#5B5247","#D9CFBC"],["Profit and loss","#1F1C17","#9C7A2E"]].map(function(a){return '<div class="art" style="--a:'+a[1]+';--b:'+a[2]+'"><span>'+a[0]+'</span></div>'}).join("");
+ $("ac").innerHTML=CATS.map(function(c){return '<option>'+c+'</option>'}).join("");
+ cartUI()}
+function cartUI(){
+ var t=0;$("cn").textContent=cart.length;
+ $("items").innerHTML=cart.length?cart.map(function(i,k){t+=P[i][3];return '<div class="item"><span>'+P[i][0]+'</span><span>'+money(P[i][3])+' <button class="chip" data-r="'+k+'" aria-label="Remove '+P[i][0]+'">Remove</button></span></div>'}).join(""):'<p style="color:var(--mute)">Your cart is empty. Add an item from the shop.</p>';
+ $("tot").textContent=money(t*(1-disc));
+ try{localStorage.setItem("clh-cart",JSON.stringify(cart))}catch(e){}}
+document.addEventListener("click",function(e){var t=e.target;
+ if(t.dataset.i!==undefined){var i=+t.dataset.i;if(P[i][3]===0){toast("Free file ready to download")}else{cart.push(i);cartUI();toast("Added to cart")}}
+ if(t.dataset.f){cat=t.dataset.f;render()}
+ if(t.closest("[data-c]")){cat=t.closest("[data-c]").dataset.c;render()}
+ if(t.dataset.r!==undefined){cart.splice(+t.dataset.r,1);cartUI()}});
+$("q").oninput=render;
+$("cur").onchange=function(){cur=this.value;render()};
+$("cartBtn").onclick=function(){$("drawer").classList.add("open")};
+$("close").onclick=function(){$("drawer").classList.remove("open")};
+$("code").oninput=function(){disc=this.value.trim().toUpperCase()==="LEARN10"?.1:0;cartUI()};
+$("pay").onclick=function(){if(!cart.length){toast("Add something to your cart first");return}
+ orders++;cart.forEach(function(i){rev+=P[i][3]*(1-disc)});cart=[];cartUI();$("drawer").classList.remove("open");toast("Demo checkout complete. A live store sends the download link here.")};
+$("dash").onclick=function(e){e.preventDefault();$("sOrd").textContent=orders;$("sRev").textContent="₱"+Math.round(rev);$("sPr").textContent=P.length;$("dlg").showModal()};
+$("dc").onclick=function(){$("dlg").close()};
+$("af").onsubmit=function(e){e.preventDefault();P.push([$("an").value,$("ac").value,"Ebook",+$("ap").value||0,5,"#3B3A33"]);this.reset();$("sPr").textContent=P.length;render();toast("Product added")};
+$("cf").onsubmit=function(e){e.preventDefault();this.reset();toast("Message sent. Demo only: connect an email service to receive it.")};
+$("nf").onsubmit=function(e){e.preventDefault();this.reset();toast("Subscribed")};
+render();
+</script>
+</body>
+</html>
